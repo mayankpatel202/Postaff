@@ -28,7 +28,7 @@ const resolvers = require('./middlewares/resolvers.js');
  */
 const typeDefs = gql(fs.readFileSync(path.join(__dirname, './middlewares/schema.graphql'), 'utf8'));
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 app.use(bodyParser.json());
