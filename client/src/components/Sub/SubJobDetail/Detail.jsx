@@ -37,7 +37,6 @@ class Detail extends React.Component {
   render() {
     const { job } = this.props;
     const claimed = this.state.claimed || job.claimed;
-    console.log('Am in Sub-Detail.jsx', localStorage.getItem('subID'));
     return (
       <Paper style={{ height: '100%' }}>
         <Typography variant="title" gutterBottom>
@@ -64,7 +63,7 @@ class Detail extends React.Component {
             </Grid>
             <Grid item xs={8}>
               { job.claimed ? 'Claimed' : claimed ? 'Claimed' : 'Ready to Claim' }
-              {job.claimed || claimed ? null : <Button onClick={() => this.subClaimJob()} style={{ marginLeft:'20px', backgroundColor:'#6200ea', color:'white' }}> Claim Job </Button>}
+              {job.claimed || claimed ? null : <Button onClick={() => this.subClaimJob()} style={{ marginLeft: '20px', backgroundColor: '#6200ea', color: 'white' }}> Claim Job </Button>}
             </Grid>
           </Grid>
         </Typography>
