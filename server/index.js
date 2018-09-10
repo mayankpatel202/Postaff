@@ -42,35 +42,35 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.post('/api/subs/notify', (req, res) => {
-//   const transport = nodemailer.createTransport({
-//     service: 'gmail',
-//     host: 'smtp.gmail.com',
-//     auth: {
-//       type: 'login',
-//       user: process.env.GMAIL_USER,
-//       pass: process.env.GMAIL_PASS,
-//     },
-//   });
-//   const mailOptions = {
-//     from: process.env.GMAIL_USER,
-//     to: process.env.GMAIL_USER,
-//     subject: 'POSTAFF: New Job Oppurtunities',
-//     html: 'Please visit Postaff and login to see your new opportunities',
-//   };
-//   transport.sendMail(mailOptions, (err, response) => {
-//     if(err) {
-//       res.render('contact-failure', err);
-//     } else {
-//       res.end('contact-success', response);
-//     }
-//   });
-//   client.messages.create({
-//     to: process.env.TWILIO_TO_PHONE,
-//     from: process.env.TWILIO_FROM_PHONE,
-//     body: 'POSTAFF: You have new job openings! https://postaff.herokuapp.com/',
-//   }).then(message => console.log(message.sid));
-// });
+app.post('/api/subs/notify', (req, res) => {
+  const transport = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+      type: 'login',
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
+    },
+  });
+  const mailOptions = {
+    from: process.env.GMAIL_USER,
+    to: process.env.GMAIL_USER,
+    subject: 'POSTAFF: New Job Oppurtunities',
+    html: 'Please visit Postaff and login to see your new opportunities',
+  };
+  transport.sendMail(mailOptions, (err, response) => {
+    if(err) {
+      res.render('contact-failure', err);
+    } else {
+      res.end('contact-success', response);
+    }
+  });
+  client.messages.create({
+    to: process.env.TWILIO_TO_PHONE,
+    from: process.env.TWILIO_FROM_PHONE,
+    body: 'POSTAFF: You have new job openings! https://postaff.herokuapp.com/',
+  }).then(message => console.log(message.sid));
+});
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'), (err) => {
