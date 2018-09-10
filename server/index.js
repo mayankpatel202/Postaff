@@ -28,11 +28,10 @@ const resolvers = require('./middlewares/resolvers.js');
 const typeDefs = gql(fs.readFileSync(path.join(__dirname, './middlewares/schema.graphql'), 'utf8'));
 const app = express();
 const PORT = process.env.PORT || 3000;
-console.log('WHAT THE HELL IS GOING ON', process.env.PORT);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(session({
