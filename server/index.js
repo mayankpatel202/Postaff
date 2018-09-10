@@ -7,9 +7,9 @@ const fs = require('fs');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 require('dotenv').config();
-const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+// const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const routes = require('./routes.js');
 
 /**
