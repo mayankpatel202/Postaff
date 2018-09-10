@@ -1,0 +1,119 @@
+# You may understand type Query as the index of graphQL schema
+# Here we will define all the quries thats available to our graphQL server
+# The first example we have here simply tell the graphQL that
+# when we call query jobs, we're expecting an array of Job back
+# We will then define the property of Job Type right below
+type Query {
+  job(id: ID!): Job
+  jobs: [Job]
+  jobsBySchool(id: ID!): [Job]
+  jobsCompletedByUser(id: ID!): [Job]
+  schools: [School]
+  subs: [Subs]
+  subById(id: ID!): Subs
+  schoolById(id: ID!): School
+  schoolByUsername(username: String): School
+  schedule: [Job]
+}
+
+type Mutation {
+  createJob(input: CreateJobInput): Job
+  editJob(input: EditJobInput): Job
+  approveJob(input: ApproveJob) : Job
+  claimJob(input: ClaimJob) : Job
+}
+
+# Here we're creating a query DataType for Job
+# We're telling graphQL whenever we ask for Job, give us the follow fields.
+# ! exclamation mark indicates the field cannot be null.
+# graphQL is statically typed, we need to specify what type the field is going to be
+# By default graphQL offers ID, Int, String, Boolean, Float.
+
+type Job {
+  id: ID!
+  description: String
+  schoolName: String
+  claimed: Boolean
+  subject: String
+  grade: String
+  start_time: String
+  end_time: String
+  start_date: String
+  end_date: String
+  approved: Boolean
+  fk_sub: String
+  updatedAt: String
+  school: School
+  sub: Subs
+}
+
+type School{
+  id: ID!
+  school_name: String
+  school_img: String
+  address_street: String
+  address_city: String
+  address_state: String
+  address_zipcode: String
+  contact_name: String
+  contact_title: String
+  contact_email: String
+  phone: String
+  phone_ext: String
+}
+
+type Subs{
+  id: ID!
+  name: String
+  photo_url: String
+  phone: String
+  email: String
+  address_street: String
+  address_city: String
+  address_state: String
+  address_zipcode: String
+  work_eligibility: Boolean
+  permitted: Boolean
+  permitted_exp_date: Boolean
+  special_ed: Boolean
+  jobAvailable: [Job]
+  jobsCompleted(id:ID!): [Job]
+  claimedJobs(id:ID!): [Job]
+}
+
+input CreateJobInput {
+  schoolId: ID
+  school: String
+  subject: String
+  grade: String
+  jobDescription: String
+  startDate: String
+  endDate: String
+  startTime: String
+  endTime: String
+  additionalInformation: String
+}
+
+input EditJobInput {
+  schoolId: ID
+  school: String
+  subject: String
+  grade: String
+  jobDescription: String
+  startDate: String
+  endDate: String
+  startTime: String
+  endTime: String
+  additionalInformation: String
+}
+
+input ApproveJob {
+  id: ID!
+  approved: Boolean
+}
+
+input ClaimJob {
+  id: ID!
+  claimed: Boolean
+  fk_sub: ID!
+}

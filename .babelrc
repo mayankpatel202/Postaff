@@ -1,5 +1,18 @@
 {
-    "presets": [
-        "env", "react"
+  "presets": [
+    "env",
+    "react",
+    "stage-2"
+  ],
+  "plugins": [ "transform-class-properties",
+    [
+      "babel-plugin-inline-import",  {
+        "extensions": [
+          ".json",
+          ".sql",
+          ".graphql"
+        ]
+      }
     ]
+  ]
 }
