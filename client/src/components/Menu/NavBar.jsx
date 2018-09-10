@@ -62,6 +62,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       isOpen: false,
+      uni: false,
     };
   }
 
@@ -69,6 +70,14 @@ class NavBar extends Component {
     this.setState({
       isOpen: open,
     });
+  }
+
+  uniSub(bool, role, name, id) {
+    localStorage.setItem('token', bool);
+    localStorage.setItem('role', role);
+    localStorage.setItem('username', name );
+    localStorage.setItem('subId', id);
+    this.props.uniLogin();
   }
 
   renderAdminSideBar() {
@@ -161,8 +170,8 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log('this navbar.jsx', this.props);
     const { classes } = this.props;
+    console.log(this.props.isLoggedIn);
     return (
       <div>
         <AppBar className={classes.appBar} color="default" position="absolute">
@@ -172,6 +181,25 @@ class NavBar extends Component {
                 <i><b>Postaff</b></i>
               </Typography>
             </Link>
+
+            <Button onClick={() => this.uniSub(true, 'admin', 'admin1', 1)}>
+              <Typography variant="subheading" style={{ paddingLeft: '4px', textShadow: '2px 2px 4px #fffff0' }} >
+                <i><b>Admin</b></i>
+              </Typography>
+            </Button>
+            
+            <Button onClick={() => this.uniSub(true, 'sub', 'Velda', 1)}>
+              <Typography variant="subheading" style={{ paddingLeft: '4px', textShadow: '2px 2px 4px #fffff0' }} >
+                <i><b>Subs</b></i>
+              </Typography>
+            </Button>
+
+            <Button onClick={() => this.uniSub(true, 'school', 'School1', 1)}>
+              <Typography variant="subheading" style={{ paddingLeft: '4px', textShadow: '2px 2px 4px #fffff0' }} >
+                <i><b>School</b></i>
+              </Typography>
+            </Button>
+
             {!this.props.isLoggedIn
               ? <Login clickLogout={this.props.clickLogout} onLogin={this.props.onLogin} />
               : <div>

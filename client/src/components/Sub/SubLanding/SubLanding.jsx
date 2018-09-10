@@ -24,6 +24,7 @@ const styles = theme => ({
 class SubLanding extends React.Component {
   render() {
     const subId = localStorage.getItem('subId');
+    console.log(subId);
     const { classes } = this.props;
     return (
       <div style={{ padding: '1.5% 1.5% 0 1.5%' }}>

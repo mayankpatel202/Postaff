@@ -118,7 +118,7 @@ class SchoolLandingJobsTable extends React.Component {
       const { order, orderBy, rowsPerPage, page } = this.state;
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, tableData.length - page * rowsPerPage);
 
-      let subs = ['Kiera Grady', 'Ellis Hermann', 'Bert Deckow', 'Cara Botsford', 'Cara Botsford', 'Augusta Kutch'];
+      let subs = 'Velda Shields';
 
       return (
         <Fragment>
@@ -150,7 +150,7 @@ class SchoolLandingJobsTable extends React.Component {
                             <TableCell>{n.grade}</TableCell>
                             <TableCell>{n.start_date}</TableCell>
                             {n.claimed ? <TableCell>Claimed</TableCell> : <TableCell>Pending</TableCell>}
-                            {n.claimed ? <TableCell>{subs[Math.floor(Math.random() * 6)]}</TableCell> : <TableCell ></TableCell>}
+                            {n.claimed ? <TableCell>{subs}</TableCell> : <TableCell ></TableCell>}
                             <TableCell>
                               <Link to={{
                                 pathname:`/school/job/edit/${n.id}`,

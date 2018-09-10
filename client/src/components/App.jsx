@@ -45,7 +45,14 @@ class App extends React.Component {
   }
 
   handleLogin(role) {
-    console.log(this.context)
+    this.setState({
+      isLoggedIn: !!localStorage.getItem('token'),
+      sasOption: localStorage.getItem('role'),
+      username: localStorage.getItem('username'),
+    });
+  }
+
+  universalLogin() {
     this.setState({
       isLoggedIn: !!localStorage.getItem('token'),
       sasOption: localStorage.getItem('role'),
@@ -65,8 +72,7 @@ class App extends React.Component {
           <div className={classes.toolbar} />
           <BrowserRouter forceRefresh={true}>
             <div className={classes.content}>
-            {console.log("Hey ", this.context)}
-              <NavBar username={this.state.username} isLoggedIn={log} option={option} clickLogout={this.clickLogout.bind(this)} onLogin={this.handleLogin.bind(this)}/>
+              <NavBar username={this.state.username} isLoggedIn={log} option={option} clickLogout={this.clickLogout.bind(this)} onLogin={this.handleLogin.bind(this)} uniLogin={this.universalLogin.bind(this)}/>
               <Switch>
                 <Route exact path="/" component={HomeLanding} /> 
                 <Route path="/login" render={props => <Login {...props} clickLogout={this.clickLogout.bind(this)} slide={this.state.slide}/>}/>
