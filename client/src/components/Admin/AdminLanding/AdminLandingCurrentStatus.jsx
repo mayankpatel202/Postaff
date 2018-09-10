@@ -24,13 +24,13 @@ class AdminLandingCurrentStatus extends React.Component {
             direction = "column"
             justify= "space-between"
           >
-            <Typography variant="display2" gutterBottom>
-          Current Status
+            <Typography variant="title" gutterBottom>
+              Current Status
             </Typography>
-            <Typography variant="headline" gutterBottom>
+            <Typography variant="subheading" gutterBottom>
               <Grid container spacing={8}>
                 <Grid item xs={6}>
-                Unclaimed Jobs
+                  Unclaimed Jobs
                 </Grid>
                 <Grid item xs={1}>
                 </Grid>
@@ -39,10 +39,10 @@ class AdminLandingCurrentStatus extends React.Component {
                 </Grid>
               </Grid>
             </Typography>
-            <Typography variant="headline" gutterBottom>
+            <Typography variant="subheading" gutterBottom>
               <Grid container spacing={8}>
                 <Grid item xs={6}>
-                Claimed Jobs
+                  Claimed Jobs
                 </Grid>
                 <Grid item xs={1}>
                 </Grid>

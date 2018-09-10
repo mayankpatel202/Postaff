@@ -45,6 +45,7 @@ class App extends React.Component {
   }
 
   handleLogin(role) {
+    console.log(this.context)
     this.setState({
       isLoggedIn: !!localStorage.getItem('token'),
       sasOption: localStorage.getItem('role'),
@@ -56,15 +57,18 @@ class App extends React.Component {
     const { classes } = this.props;
     const log = this.state.isLoggedIn;
     const option = this.state.sasOption;
+    
     return (
       <React.Fragment>
+        
         <main>
           <div className={classes.toolbar} />
           <BrowserRouter forceRefresh={true}>
             <div className={classes.content}>
+            {console.log("Hey ", this.context)}
               <NavBar username={this.state.username} isLoggedIn={log} option={option} clickLogout={this.clickLogout.bind(this)} onLogin={this.handleLogin.bind(this)}/>
               <Switch>
-                <Route exact path="/" component={HomeLanding} />
+                <Route exact path="/" component={HomeLanding} /> 
                 <Route path="/login" render={props => <Login {...props} clickLogout={this.clickLogout.bind(this)} slide={this.state.slide}/>}/>
                 <PrivateRoute exact path="/admin" component={AdminLanding} log={log} />
                 <PrivateRoute exact path="/admin/schedule" component={AdminSchedule} log={log} />

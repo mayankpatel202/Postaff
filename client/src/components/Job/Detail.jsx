@@ -35,15 +35,15 @@ class Detail extends React.Component {
       approved: true,
     }));
 
-    axios.post('/api/subs/notify', {
-    })
-      .then((response) => {
-        console.log('notification sent', response);
-        alert('Available subs will be notified');
-      })
-      .catch((error) => {
-        console.log('failed to send notification', error);
-      });
+    // axios.post('/api/subs/notify', {
+    // })
+    //   .then((response) => {
+    //     console.log('notification sent', response);
+    //     alert('Available subs will be notified');
+    //   })
+    //   .catch((error) => {
+    //     console.log('failed to send notification', error);
+    //   });
   }
 
   render() {
